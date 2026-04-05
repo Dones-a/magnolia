@@ -1,0 +1,341 @@
+/* css/style.css */
+:root {
+    --bg-color: #242023;        /* Gris oscuro mate con muy sutil subtono malva */
+    --bg-darker: #1a1718;       /* Fondo más profundo y elegante */
+    --text-color: #f6eef0;      /* Blanco roto súper suave (no cansa la vista) */
+    --text-muted: #a69598;      /* Gris cálido/rosáceo */
+    --primary-color: #d6899c;   /* Dusty Rose (Rosa Viejo) */
+    --secondary-color: #edafbc; /* Rosa polvo claro */
+    --accent-color: #ba6075;    /* Mauve / Vino rosado suave */
+}
+
+html {
+    scroll-behavior: smooth;    
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* ================= HEADER & NAV ================= */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(36, 32, 35, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 1000;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid rgba(214, 137, 156, 0.15);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+}
+
+nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    position: relative;
+    padding: 0.5rem 0;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--primary-color);
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+    transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* ================= SECTION COMMON ================= */
+.section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 0; 
+}
+
+.bg-darker {
+    background-color: var(--bg-darker);
+}
+
+.section-title {
+    font-size: 3rem;
+    margin-bottom: 4rem;
+    text-align: center;
+    font-weight: 800;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+    letter-spacing: -1px;
+    color: var(--secondary-color);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    width: 40%;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+    bottom: -15px;
+    left: 30%;
+    border-radius: 2px;
+}
+
+/* ================= ABOUT ME ================= */
+#aboutme {
+    position: relative;
+    background: radial-gradient(circle at 10% 20%, rgba(214, 137, 156, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(186, 96, 117, 0.05) 0%, transparent 50%);
+}
+
+.text-content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.animate-title {
+    font-size: 4.5rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -2px;
+    color: var(--text-color);
+}
+
+.animate-title span {
+    background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.description {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+/* ================= GALERÍA ================= */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+.gallery-item {
+    position: relative;
+    height: 380px;
+    background-color: #2b2628;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+    
+    background-image: repeating-linear-gradient(45deg, #242023, #242023 15px, #2b2628 15px, #2b2628 30px);
+}
+
+.gallery-item:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(214, 137, 156, 0.2);
+}
+
+.gallery-media {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.gallery-overlay {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26, 23, 24, 0.95) 0%, rgba(26, 23, 24, 0.4) 50%, transparent 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: 2.5rem;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.overlay-content {
+    transform: translateY(20px);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.gallery-item:hover .overlay-content {
+    transform: translateY(0);
+}
+
+.overlay-content h3 {
+    font-size: 1.8rem;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.overlay-content p {
+    color: var(--primary-color);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.9rem;
+}
+
+/* ================= CONTACTO ================= */
+.text-center {
+    text-align: center;
+}
+
+.contact-text {
+    font-size: 1.3rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto 3rem auto;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.social-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: rgba(43, 38, 40, 0.6);
+    color: var(--text-color);
+    font-size: 1.8rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(214, 137, 156, 0.15);
+}
+
+.social-icon:hover {
+    transform: translateY(-8px);
+    background: var(--primary-color);
+    color: #fff;
+    box-shadow: 0 15px 30px rgba(214, 137, 156, 0.25);
+    border-color: var(--primary-color);
+}
+
+/* Redes individuales colores on hover */
+.social-icon:hover[title="TikTok"] { background: #010101; color: #fff; border-color: #010101; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); text-shadow: 2px 2px 0px #fe0050, -2px -2px 0px #00f2fe; }
+.social-icon:hover[title="Instagram"] { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: #fff; border-color: transparent; box-shadow: 0 15px 30px rgba(220, 39, 67, 0.25); }
+.social-icon:hover[title="Facebook"] { background: #1877f2; color: #fff; border-color: #1877f2; box-shadow: 0 15px 30px rgba(24, 119, 242, 0.25); }
+
+/* ================= FOOTER ================= */
+footer {
+    text-align: center;
+    padding: 2.5rem 0;
+    background-color: var(--bg-darker);
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    border-top: 1px solid rgba(214, 137, 156, 0.1);
+}
+
+/* ================= ANIMACIONES SCROLL ================= */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    .animate-title {
+        font-size: 3.5rem;
+    }
+    
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    nav ul {
+        gap: 1.5rem;
+    }
+
+    .section {
+        padding: 80px 0;
+    }
+}
